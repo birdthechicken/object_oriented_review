@@ -28,78 +28,81 @@ laptop_3 = {color: "red", size: "big", price: 5000}
 
 
 class Laptop
-  def initialize(color, size, price, active)
-    @color = color
-    @size = size
-    @price = price
-    @active = active
+
+  attr_reader :color, :size, :price, :active
+  attr_writer :price
+
+
+  def initialize(input_options)                    #(color, size, price, active)
+    @color = input_options[:color]
+    @size = input_options[:size]
+    @price = input_options[:price]
+    @active = input_options[:active]
+    
   end
 
-  def color
-    @color
-  end
-
-  def size
-    @size
-  end
-
-  def price
-    @price
-  end
-
-  def active
-    @active
-  end
-
-  def price=(new_value)
-    @price = new_value
-  end
-
+  
   def print_info
-    puts "#{( color) #}"
-
-
-
-
-class Employee
-  def initialize(input_first_name, input_last_name, input_salary, input_active)
-    @first_name = input_first_name
-    @last_name = input_last_name
-    @salary = input_salary
-    @active = input_active
-  end
-
-  def first_name
-    @first_name
-  end
-
-  def last_name
-    @last_name.upcase
-  end
-
-  def salary
-    @salary
-  end
-
-  def active
-    @active
-  end
-
-  def active=(new_value)
-    @active = new_value
-  end
-
-  def print_info
-    puts "#{ first_name} #{ last_name} makes #{ salary } a year."
-   end 
-
-  def give_annual_raise
-    @salary *= 1.05
+    puts "#{ color } #{ size } laptop priced at #{ price } #{ active }"
   end
 end
 
-employee_1 = Employee.new("Helen", "Bonom Carter", 80000, true)
-employee_2 = Employee.new("Peter", "Gibbons", 60000, true)
+class Food < Laptop
+
+  def initialize(input_options)
+    super
+    @shelf_life = input_options[:shelf_life]
+  end
+end
+
+laptop_1 = Laptop.new(
+                      color: "black", 
+                      size: "medium", 
+                      price: 3000, 
+                      active: true
+                      )
+laptop_2 = Laptop.new(
+                      color: "white", 
+                      size: "small", 
+                      price: 4000, 
+                      active: true
+                      )
+laptop_3 = Laptop.new(
+                      color: "red", 
+                      size: "big", 
+                      price: 5000, 
+                      active: true
+                      )
+
+laptop_1.print_info
+
+
+
+#deleted lines
+
+# def color.     #reader method
+  #   @color
+  # end
+
+  # def size
+  #   @size
+  # end
+
+  # def price
+  #   @price
+  # end
+
+  # def active
+  #   @active
+  # end
+
+  # def price=(new_value).  #writer method
+  #   @price = new_value
+  # end
+
+
+
+
 
 
 
